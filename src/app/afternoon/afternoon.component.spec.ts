@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AfternoonComponent } from './afternoon.component';
+import { By } from '@angular/platform-browser';
 
 describe('AfternoonComponent', () => {
   let component: AfternoonComponent;
@@ -54,6 +55,19 @@ describe('AfternoonComponent', () => {
     component.clicked();
     fixture.detectChanges(); // 要有這一行才會執行變更偵測
     expect(spanElement.innerHTML).toContain('OFF');
+  });
+
+
+  it('display should be ON using debugElement', () => {
+
+    var de = fixture.debugElement.query(By.css('#btn'));
+    de.triggerEventHandler('click', {});
+
+    fixture.detectChanges(); // 要有這一行才會執行變更偵測
+
+    var span = fixture.debugElement.query(By.css('span'));
+
+    expect(span.nativeElement.innerHTML).toContain('ON');
   });
 
   it('display should be ON and allow component to async operation', () => {
