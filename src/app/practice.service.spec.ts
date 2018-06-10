@@ -35,4 +35,12 @@ describe('PracticeService', () => {
     expect(dataService.run()).toBe(100);
   });
 
+  it('should pass parameter', () => {
+    spyOn(practiceService, 'send').and.callThrough();
+    const attemptedValue = 'dir';
+    let expected = practiceService.send(attemptedValue);
+    expect(practiceService.send).toHaveBeenCalledWith('dir');
+    expect(expected).toBe(attemptedValue);
+  });
+
 });

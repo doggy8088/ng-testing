@@ -15,4 +15,8 @@ export class PracticeService {
   get() {
     return this.dataService.value;
   }
+
+  send(command) {
+    return command;
+  }
 }
