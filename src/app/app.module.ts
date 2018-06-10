@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AfternoonComponent } from './afternoon/afternoon.component';
+import { ShowDataComponent } from './show-data/show-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AfternoonComponent
+    AfternoonComponent,
+    ShowDataComponent
   ],
   imports: [
     BrowserModule
