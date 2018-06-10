@@ -30,8 +30,9 @@ describe('ShowDataComponent', () => {
   // https://angular.io/api/common/http/testing/HttpTestingController
   it('should call api to URL', () => {
     const mockResult = { name: 'Kevin' };
+    const expectedValue = 'Kevin!!';
     component.getData().subscribe(value => {
-      expect(value).toEqual(mockResult);
+      expect(value).toEqual(expectedValue);
     });
 
     // Method 1

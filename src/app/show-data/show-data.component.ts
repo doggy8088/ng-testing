@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-show-data',
@@ -14,6 +15,9 @@ export class ShowDataComponent implements OnInit {
   }
 
   getData() {
-    return this.http.get('myurl');
+    return this.http.get('myurl')
+      .pipe(
+        map((value: any) => value.name + '!!')
+      )
   }
 }
