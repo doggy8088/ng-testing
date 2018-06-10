@@ -44,6 +44,18 @@ describe('AfternoonComponent', () => {
     expect(spanElement.innerHTML).toContain('ON');
   });
 
+  it('display should be OFF', () => {
+    let nativeElement = fixture.debugElement.nativeElement as HTMLElement;
+    let spanElement = nativeElement.querySelector('span') as HTMLSpanElement;
+    component.isOn = true;
+    fixture.detectChanges(); // 要有這一行才會執行變更偵測
+    expect(spanElement.innerHTML).toContain('ON');
+
+    component.clicked();
+    fixture.detectChanges(); // 要有這一行才會執行變更偵測
+    expect(spanElement.innerHTML).toContain('OFF');
+  });
+
   it('display should be ON and allow component to async operation', () => {
     let nativeElement = fixture.debugElement.nativeElement as HTMLElement;
     let spanElement = nativeElement.querySelector('span') as HTMLSpanElement;
