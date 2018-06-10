@@ -24,6 +24,7 @@
     "core-js": "^2.5.4",
     "electron": "^2.0.2",
     "karma-mocha-reporter": "^2.2.5",
+    "karma-nyan-reporter": "^0.2.5",
     "rxjs": "^6.0.0",
     "wallaby-webpack": "^3.9.10",
     "zone.js": "^0.8.26"
