@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { ShowDataComponent } from './show-data.component';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ShowDataComponent', () => {
   let component: ShowDataComponent;
@@ -14,7 +15,8 @@ describe('ShowDataComponent', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ ShowDataComponent ],
-        imports: [ HttpClientTestingModule ]
+        imports: [ HttpClientTestingModule ],
+        schemas: [ CUSTOM_ELEMENTS_SCHEMA]
       })
       .compileComponents();
     }));
@@ -80,7 +82,8 @@ describe('ShowDataComponent', () => {
             provide: HttpClient,
             useValue: spyHttpGet
           }
-        ]
+        ],
+        schemas: [ CUSTOM_ELEMENTS_SCHEMA]
       })
       .compileComponents();
     }));
