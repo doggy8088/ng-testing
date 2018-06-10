@@ -16,10 +16,41 @@ describe('AfternoonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AfternoonComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); // 要有這一行，元件的 ngOnInit() 才會被執行
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('message should be ON', () => {
+    component.clicked();
+    expect(component.isOn).toBeTruthy();
+    expect(component.message).toBe('ON');
+  });
+
+  it('message should be OFF', () => {
+    component.isOn = true;
+    component.clicked();
+    expect(component.isOn).toBeFalsy();
+    expect(component.message).toBe('OFF');
+  });
+
+  it('display should be ON', () => {
+    let nativeElement = fixture.debugElement.nativeElement as HTMLElement;
+    let spanElement = nativeElement.querySelector('span') as HTMLSpanElement;
+    component.clicked();
+    fixture.detectChanges(); // 要有這一行才會執行變更偵測
+    expect(spanElement.innerHTML).toContain('ON');
+  });
+
+  it('display should be ON and allow component to async operation', () => {
+    let nativeElement = fixture.debugElement.nativeElement as HTMLElement;
+    let spanElement = nativeElement.querySelector('span') as HTMLSpanElement;
+    component.clicked();
+    fixture.detectChanges(); // 要有這一行才會執行變更偵測
+    fixture.whenStable().then(() => {
+      expect(spanElement.innerHTML).toContain('ON');
+    })
   });
 });

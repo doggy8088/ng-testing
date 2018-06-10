@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./afternoon.component.css']
 })
 export class AfternoonComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    console.log('ngOnInit called');
   }
 
+  isOn: boolean;
+
+  clicked() {
+    this.isOn = !this.isOn;
+  }
+
+  get message() {
+    return this.isOn ? 'ON' : 'OFF';
+  }
 }
